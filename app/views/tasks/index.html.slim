@@ -1,3 +1,5 @@
 ul
   - @tasks.each do |task|
-    li = task.description
+    li
+      = task.description
+      = link_to 'Delete', task_path(id: task.id), method: :delete, class: "cpy-delete-task-#{task.id}"
