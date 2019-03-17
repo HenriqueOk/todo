@@ -1,0 +1,6 @@
+= simple_form_for @task do |f|
+  = f.input :description
+  - if @task.persisted?
+    = f.submit 'Update task'
+  - else
+    = f.submit 'Create task'

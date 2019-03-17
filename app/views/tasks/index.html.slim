@@ -2,4 +2,5 @@ ul
   - @tasks.each do |task|
     li
       = task.description
+      = link_to 'Edit', edit_task_path(id: task.id), class: "cpy-edit-task-#{task.id}"
       = link_to 'Delete', task_path(id: task.id), method: :delete, class: "cpy-delete-task-#{task.id}"
