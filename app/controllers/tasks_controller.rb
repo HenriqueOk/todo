@@ -46,6 +46,13 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.completed_at = Time.current
 
+    email_random_params = Task::CompletedEmailParams.call
+    TaskMailer.with(
+      task_id: @task.id,
+      message: email_random_params.message,
+      message_color: email_random_params.message_color
+    ).completed.deliver_later
+
     @task.save
 
     redirect_to tasks_path
