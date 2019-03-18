@@ -1,6 +1,6 @@
 = simple_form_for @task do |f|
   = f.input :description
   - if @task.persisted?
-    = f.submit 'Update task'
+    = f.submit 'Update task', class: 'btn btn-success float-right'
   - else
-    = f.submit 'Create task'
+    = f.submit 'Create task', class: 'btn btn-success float-right'
