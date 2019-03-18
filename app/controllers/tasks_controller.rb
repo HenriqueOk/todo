@@ -42,6 +42,17 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  def complete
+    @task = Task.find(params[:id])
+    @task.completed_at = Time.current
+
+    @task.save
+
+    redirect_to tasks_path
+  end
+
+  private
+
   def authenticate
     redirect_to new_user_session_path if current_user.blank?
   end
