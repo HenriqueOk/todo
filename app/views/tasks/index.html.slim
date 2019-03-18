@@ -1,11 +1,15 @@
-h1 Tasks
-ul
-  - @tasks.each do |task|
-    li
-      = task.description
-      - if task.completed_at.present?
-        |  (Complete)
-      - else
-        = link_to 'Complete', complete_task_path(id: task.id), method: :post, class: "btn btn-success btn-sm cpy-complete-task-#{task.id}"
-      = link_to 'Edit', edit_task_path(id: task.id), class: "btn btn-primary btn-sm cpy-edit-task-#{task.id}"
-      = link_to 'Delete', task_path(id: task.id), method: :delete, class: "btn btn-danger btn-sm cpy-delete-task-#{task.id}"
+.row
+  .col-10
+    h1 Tasks
+    ul
+      - @tasks.each do |task|
+        li
+          = task.description
+          - if task.completed_at.present?
+            |  (Complete)
+          - else
+            = link_to 'Complete', complete_task_path(id: task.id), method: :post, class: "btn btn-success btn-sm ml-1 cpy-complete-task-#{task.id}"
+          = link_to 'Edit', edit_task_path(id: task.id), class: "btn btn-primary btn-sm ml-1 cpy-edit-task-#{task.id}"
+          = link_to 'Delete', task_path(id: task.id), method: :delete, class: "btn btn-danger btn-sm ml-1 cpy-delete-task-#{task.id}"
+  .col-2
+    = link_to 'New', new_task_path, class: "btn btn-success btn-sm mt-1 float-right"
