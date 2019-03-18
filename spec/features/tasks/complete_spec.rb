@@ -14,8 +14,14 @@ describe 'As a User', type: :feature do
     visit tasks_path
 
     page.find(".cpy-complete-task-#{task.id}").click
+    event = Event.first
 
     expect(current_path).to eq tasks_path
     expect(page).to have_content('Task description (Complete)')
+    expect(event).to be_present
+    expect(event.event_type).to eq 'task_completed'
+    expect(event.data['task_id']).to eq task.id
+    expect(event.data).to have_key('message')
+    expect(event.data).to have_key('message_color')
   end
 end
